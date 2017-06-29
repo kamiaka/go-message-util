@@ -9,7 +9,7 @@ This package uses `golang.org/x/text/message` package internally.
 ### Defining messages
 
 ```go
-var Japanese = []Setter{
+var Japanese = []Expr{
   String("Hello, %s", "こんにちは、%s"),
   String("Good bye, %s", "さようなら、%s"),
 }

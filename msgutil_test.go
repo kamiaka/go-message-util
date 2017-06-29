@@ -9,7 +9,7 @@ import (
 	"golang.org/x/text/message/catalog"
 )
 
-var japanese = []Setter{
+var japanese = []Expr{
 	String("Hello, %s", "こんにちは、%s"),
 	String("Good bye, %s", "さようなら、%s"),
 }
@@ -20,20 +20,20 @@ func TestSetLanguage(t *testing.T) {
 	j.SetString(language.Japanese, "Good bye, %s", "さようなら、%s")
 
 	cases := []struct {
-		setters []Setter
-		tag     language.Tag
-		want    *catalog.Catalog
+		expr []Expr
+		tag  language.Tag
+		want *catalog.Catalog
 	}{
 		{
-			setters: japanese,
-			tag:     language.Japanese,
-			want:    j,
+			expr: japanese,
+			tag:  language.Japanese,
+			want: j,
 		},
 	}
 
 	for i, tc := range cases {
 		got := catalog.New()
-		err := SetLanguage(got, tc.tag, tc.setters)
+		err := SetLanguage(got, tc.tag, tc.expr)
 		if err != nil {
 			t.Errorf("#%v SetLanguage() occured error %s", i, err)
 		}
