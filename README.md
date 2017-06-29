@@ -31,3 +31,7 @@ p := message.NewPrinter(t, message.Catalog(c))
 name := "世界"
 p.Printf("Hello, %s", p.Sprintf(name)) // こんにちは、世界
 ```
+
+## License
+
+MIT
