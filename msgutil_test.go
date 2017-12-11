@@ -15,14 +15,14 @@ var japanese = []Expr{
 }
 
 func TestSetLanguage(t *testing.T) {
-	j := catalog.New()
+	j := catalog.NewBuilder()
 	j.SetString(language.Japanese, "Hello, %s", "こんにちは、%s")
 	j.SetString(language.Japanese, "Good bye, %s", "さようなら、%s")
 
 	cases := []struct {
 		expr []Expr
 		tag  language.Tag
-		want *catalog.Catalog
+		want *catalog.Builder
 	}{
 		{
 			expr: japanese,
@@ -32,7 +32,7 @@ func TestSetLanguage(t *testing.T) {
 	}
 
 	for i, tc := range cases {
-		got := catalog.New()
+		got := catalog.NewBuilder()
 		err := SetLanguage(got, tc.tag, tc.expr)
 		if err != nil {
 			t.Errorf("#%v SetLanguage() occured error %s", i, err)
