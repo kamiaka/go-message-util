@@ -18,7 +18,7 @@ var Japanese = []Expr{
 ### Set messages to catalog
 
 ```go
-c := catalog.New()
+c := catalog.NewBuilder()
 SetLanguage(c, language.Japanese, Japanese)
 ```
 
